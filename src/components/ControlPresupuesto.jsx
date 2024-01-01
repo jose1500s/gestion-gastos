@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { Card, Text, Metric, DonutChart, Title, Button } from "@tremor/react";
 import ModalNuevoGasto from "./ModalNuevoGasto";
 
 export default function ControlPresupuesto({ presupuesto }) {
+
+    const [gastos, setGastos] = useState([])
+
     const cities = [
         {
             name: "New York",
@@ -25,6 +29,17 @@ export default function ControlPresupuesto({ presupuesto }) {
         })
     }
 
+    const generarId = () => {
+        const random = Math.random().toString(36).substr(2)
+        const fecha = Date.now().toString(36)
+        return random + fecha
+    }
+
+    const guardarGasto = gasto => {
+        gasto.id = generarId()
+        setGastos([...gastos, gasto])
+    }
+
     return (
         <div className="w-5/6 flex gap-5">
             <section id="resumen" className="w-9/12 p-5 h-56 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
@@ -33,7 +48,9 @@ export default function ControlPresupuesto({ presupuesto }) {
                         <h2 className="text-2xl text-white font-semibold ">Resumen General</h2>
                     </div>
                     <div>
-                        <ModalNuevoGasto />
+                        <ModalNuevoGasto 
+                            guardarGasto={guardarGasto}
+                        />
                     </div>
                 </header>
                 <section className="flex justify-between items-center pt-8">

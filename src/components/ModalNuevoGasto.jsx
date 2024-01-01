@@ -4,7 +4,7 @@ import { TextInput, NumberInput, SearchSelect, SearchSelectItem } from "@tremor/
 import { CurrencyDollarIcon } from '@heroicons/react/outline'
 import { toast } from 'sonner'
 
-export default function ModalNuevoGasto() {
+export default function ModalNuevoGasto({ guardarGasto }) {
 
     const [openModal, setOpenModal] = useState(false);
     const [nombre, setNombre] = useState('')
@@ -17,6 +17,11 @@ export default function ModalNuevoGasto() {
             toast.error('Todos los campos son obligatorios')
             return;
         }
+        guardarGasto({nombre, cantidad, categoria})
+        setOpenModal(false)
+        setNombre('')
+        setCantidad('')
+        setCategoria('')
     }
 
     return (
