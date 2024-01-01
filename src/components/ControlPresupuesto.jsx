@@ -44,8 +44,8 @@ export default function ControlPresupuesto({ presupuesto }) {
 
     return (
         <>
-            <div className="w-5/6 flex gap-5">
-                <section id="resumen" className="w-9/12 p-5 h-56 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
+            <div className="md:w-full px-6 md:flex gap-5">
+                <section id="resumen" className="w-full p-5 lg:w-9/12  h-auto bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
                     <header className="flex justify-between">
                         <div>
                             <h2 className="text-2xl text-white font-semibold ">Resumen General</h2>
@@ -56,27 +56,27 @@ export default function ControlPresupuesto({ presupuesto }) {
                             />
                         </div>
                     </header>
-                    <section className="flex justify-between items-center pt-8">
-                        <Card className="max-w-xs">
+                    <section className="flex justify-between flex-wrap  items-center pt-8">
+                        <Card className="lg:max-w-xs m-1">
                             <Text>Presupuesto</Text>
                             <Metric className="pt-1">{formatearPresupuesto(presupuesto)}</Metric>
                         </Card>
 
-                        <Card className="max-w-xs">
+                        <Card className="lg:max-w-xs m-1">
                             <Text>Disponible</Text>
                             <Metric className="pt-1">$ 200.00</Metric>
                         </Card>
 
-                        <Card className="max-w-xs">
+                        <Card className="lg:max-w-xs m-1">
                             <Text>Gastado</Text>
                             <Metric className="pt-1">$ 300,00</Metric>
                         </Card>
                     </section>
                 </section>
 
-                <section className="w-3/12 p-5 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm">
+                <section className="w-full lg:w-3/12 p-5 mt-2 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm">
                     <Card className="max-w-lg">
-                        <Title>Gastos:</Title>
+                        <Title>Desgloce:</Title>
                         <DonutChart
                             className="mt-6"
                             data={cities}
@@ -94,6 +94,7 @@ export default function ControlPresupuesto({ presupuesto }) {
                         gastos={gastos}
                     />
                 </div>
+                <span className='hidden'/>
             </main>
         </>
     )

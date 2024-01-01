@@ -10,5 +10,5 @@ Currently, two official plugins are available:
 
 ## To Do
 
-- Cambiar el header
-- Agregar boton para el modal 'agregar gasto'
+- Acomodar altura del header
+- Terminar componentes de gastos

@@ -1,30 +1,34 @@
 import NuevoPresupuesto from "./nuevoPresupuesto"
 import ControlPresupuesto from "./ControlPresupuesto"
-
+import HoraLocal from "./HoraLocal"
 export default function Header({ presupuesto, setPresupuesto, isValidPresupuesto, setIsValidPresupuesto }) {
+
+  
+
     return (
-            <header className="flex flex-col pt-3  items-center h-screen gap-10 bg-gradient-to-b from-gray-900 to-gray-600 ">
-                <h1
-                    className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-[2.85rem] text-center"
-                >
-                    Gestiona Tu Presupuesto
+        <header className="flex flex-col pt-3  items-center h-screen h-full gap-10 bg-gradient-to-b from-gray-900 to-gray-600 ">
+            <section className="flex justify-between px-6 items-center w-full">
+                <div>
+                    <h1 className="text-white text-3xl font-semibold">Bienvenido
+                        <br />
+                        <span className="text-lg">Gestiona tu presupuesto fácilmente</span>
+                    </h1>
+                </div>
+                <HoraLocal />
+            </section>
+            {isValidPresupuesto ? (
+                <ControlPresupuesto
+                    presupuesto={presupuesto}
+                />
+            ) :
+                <NuevoPresupuesto
+                    presupuesto={presupuesto}
+                    setPresupuesto={setPresupuesto}
+                    setIsValidPresupuesto={setIsValidPresupuesto}
+                />
+            }
 
-                    <span className="sm:block"> De Manera Sencilla. </span>
-                </h1>
 
-                {isValidPresupuesto ? (
-                    <ControlPresupuesto 
-                        presupuesto={presupuesto}
-                    />
-                ) :
-                    <NuevoPresupuesto
-                        presupuesto={presupuesto}
-                        setPresupuesto={setPresupuesto}
-                        setIsValidPresupuesto={setIsValidPresupuesto}
-                    />
-                }
-
-
-            </header>
+        </header>
     )
 }
