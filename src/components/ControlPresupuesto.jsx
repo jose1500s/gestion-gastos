@@ -1,4 +1,5 @@
 import { Card, Text, Metric, DonutChart, Title, Button } from "@tremor/react";
+import ModalNuevoGasto from "./ModalNuevoGasto";
 
 export default function ControlPresupuesto({ presupuesto }) {
     const cities = [
@@ -32,7 +33,7 @@ export default function ControlPresupuesto({ presupuesto }) {
                         <h2 className="text-2xl text-white font-semibold ">Resumen General</h2>
                     </div>
                     <div>
-                        <button className="p-2 bg-white rounded-md">Agregar gasto +</button>
+                        <ModalNuevoGasto />
                     </div>
                 </header>
                 <section className="flex justify-between items-center pt-8">
