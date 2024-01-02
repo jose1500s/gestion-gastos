@@ -11,7 +11,7 @@ const MostrarHoraLocal = () => {
     }, []); 
 
     return (
-        <span className="text-white text-2xl font-semibold">
+        <span className="text-white text-2xl max-[640px]:text-xl font-semibold">
             {time}
         </span>
     );

@@ -45,16 +45,16 @@ export default function ControlPresupuesto({ presupuesto }) {
     return (
         <>
             <section id="resumen" className="w-full p-5 lg:w-4/5  h-auto bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
-                <header className="flex justify-between">
+                <div className="flex justify-between items-center">
                     <div>
-                        <h2 className="text-2xl text-white font-semibold ">Resumen General</h2>
+                        <h2 className="text-2xl max-[640px]:text-xl text-white font-semibold ">Resumen General</h2>
                     </div>
                     <div>
                         <ModalNuevoGasto
                             guardarGasto={guardarGasto}
                         />
                     </div>
-                </header>
+                </div>
                 <section className="flex justify-between flex-wrap  items-center pt-8">
                     <Card className="lg:max-w-xs m-1">
                         <Text>Presupuesto</Text>
