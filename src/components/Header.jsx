@@ -6,7 +6,7 @@ export default function Header({ presupuesto, setPresupuesto, isValidPresupuesto
   
 
     return (
-        <header className="flex flex-col pt-3  items-center h-screen h-full gap-10 bg-gradient-to-b from-gray-900 to-gray-600 ">
+        <header className="flex flex-col pt-3  max-[640px]:h-auto max-[640px]:p-3 items-center h-screen h-full gap-10 bg-gradient-to-b from-gray-900 to-gray-600 ">
             <section className="flex justify-between px-6 items-center w-full">
                 <div>
                     <h1 className="text-white text-3xl font-semibold">Bienvenido
