@@ -73,13 +73,11 @@ export default function ControlPresupuesto({ presupuesto }) {
                 </section>
             </section>
 
-            <div className='md:flex w-4/5'>
-                <main className='w-5/6'>
-                    <div className='w-[73%]'>
-                        <ListadoGastos
-                            gastos={gastos}
-                        />
-                    </div>
+            <div className='md:flex md:gap-3 max-[640px]:w-full w-4/5'>
+                <main className='max-[640px]:w-full w-5/6'>
+                    <ListadoGastos
+                        gastos={gastos}
+                    />
                     <span className='hidden' />
                 </main>
                 <section className="w-full lg:w-3/12 p-5 mt-2 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm">
