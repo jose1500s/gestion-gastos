@@ -62,10 +62,14 @@ export default function ModalNuevoGasto({ guardarGasto }) {
                             <SearchSelectItem value='Comida'>Comida</SearchSelectItem>
                             <SearchSelectItem value='Casa'>Casa</SearchSelectItem>
                             <SearchSelectItem value='Automovil'>Automovil</SearchSelectItem>
-                            <SearchSelectItem value='General'>Gasto General</SearchSelectItem>
                             <SearchSelectItem value='Ocio'>Ocio</SearchSelectItem>
                             <SearchSelectItem value='Salud'>Salud</SearchSelectItem>
                             <SearchSelectItem value='Suscripciones'>Suscripciones</SearchSelectItem>
+                            <SearchSelectItem value='ComprasEnLinea'>Compras en linea</SearchSelectItem>
+                            <SearchSelectItem value='Videojuegos'>Videojuegos</SearchSelectItem>
+                            <SearchSelectItem value='Regalos'>Regalos</SearchSelectItem>
+                            <SearchSelectItem value='Ropa'>Ropa</SearchSelectItem>
+                            <SearchSelectItem value='General'>Gasto General</SearchSelectItem>
                         </SearchSelect>
 
                         <Button className='mt-4 w-1/3 mx-auto' type='submit'>Agregar</Button>

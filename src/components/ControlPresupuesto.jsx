@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Card, Text, Metric, DonutChart, Title, Button } from "@tremor/react";
 import ModalNuevoGasto from "./ModalNuevoGasto";
 import ListadoGastos from './ListadoGastos';
-
+import { toast } from 'sonner'
 export default function ControlPresupuesto({ presupuesto }) {
 
     const [gastos, setGastos] = useState([])
@@ -40,6 +40,7 @@ export default function ControlPresupuesto({ presupuesto }) {
         gasto.id = generarId()
         gasto.fecha = Date.now();
         setGastos([...gastos, gasto])
+        toast.success('Gasto agregado correctamente')
     }
 
     return (
