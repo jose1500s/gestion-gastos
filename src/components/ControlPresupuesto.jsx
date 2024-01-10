@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, Text, Metric, DonutChart, Title, Button } from "@tremor/react";
 import ModalNuevoGasto from "./ModalNuevoGasto";
 import ListadoGastos from './ListadoGastos';
@@ -6,6 +6,15 @@ import { toast } from 'sonner'
 export default function ControlPresupuesto({ presupuesto }) {
 
     const [gastos, setGastos] = useState([])
+    const [disponible, setDisponible] = useState(0)
+    const [gastado, setGastado] = useState(0)
+
+    useEffect(() => {
+        const gastado = gastos.reduce((acc, gasto) => acc + gasto.cantidad, 0)
+        setGastado(gastado)
+        const disponible = presupuesto - gastado
+        setDisponible(disponible)
+    }, [gastos])
 
     const cities = [
         {
@@ -45,7 +54,7 @@ export default function ControlPresupuesto({ presupuesto }) {
 
     return (
         <>
-            <section id="resumen" className="w-full p-5 lg:w-4/5  h-auto bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
+            <section id="resumen" className="w-full p-5  h-auto bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm ">
                 <div className="flex justify-between items-center">
                     <div>
                         <h2 className="text-2xl max-[640px]:text-xl text-white font-semibold ">Resumen General</h2>
@@ -64,24 +73,24 @@ export default function ControlPresupuesto({ presupuesto }) {
 
                     <Card className="lg:max-w-xs m-1">
                         <Text>Disponible</Text>
-                        <Metric className="pt-1">$ 200.00</Metric>
+                        <Metric className="pt-1">{formatearPresupuesto(disponible)}</Metric>
                     </Card>
 
                     <Card className="lg:max-w-xs m-1">
                         <Text>Gastado</Text>
-                        <Metric className="pt-1">$ 300,00</Metric>
+                        <Metric className="pt-1">{formatearPresupuesto(gastado)}</Metric>
                     </Card>
                 </section>
             </section>
 
-            <div className='md:flex md:gap-3 max-[640px]:w-full w-4/5'>
-                <main className='max-[640px]:w-full w-5/6'>
+            <div className='md:flex md:gap-3  w-full'>
+                <main className='max-[640px]:w-full w-5/6 mt-2'>
                     <ListadoGastos
                         gastos={gastos}
                     />
                     <span className='hidden' />
                 </main>
-                <section className="w-full lg:w-3/12 p-5 mt-2 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm">
+                <section className="w-full h-[560px] lg:w-3/12 p-5 mt-2 bg-slate-800 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm">
                     <Card className="max-w-lg">
                         <Title>Desgloce:</Title>
                         <DonutChart
