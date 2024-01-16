@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import ModalResetApp from './ModalResetApp';
 import ModalAgrearPresupuesto from './ModalAgregarPresupuesto';
 
-export default function ControlPresupuesto({ presupuesto, setPresupuesto , isDarkMode, setIsValidPresupuesto }) {
+export default function ControlPresupuesto({ presupuesto, setPresupuesto, isDarkMode, setIsValidPresupuesto }) {
 
     const [gastos, setGastos] = useState(
         localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
@@ -24,6 +24,11 @@ export default function ControlPresupuesto({ presupuesto, setPresupuesto , isDar
             setOpenModalEditar(true);
         }
     }, [gastoEditar])
+
+    useEffect(() => {
+        setPresupuesto(presupuesto + deposito)
+        setDisponible(disponible + deposito)
+    }, [deposito])
 
     useEffect(() => {
         localStorage.setItem('gastos', JSON.stringify(gastos) ?? [])
@@ -167,14 +172,16 @@ export default function ControlPresupuesto({ presupuesto, setPresupuesto , isDar
                     <Card className="lg:max-w-xs m-1">
                         <Text>Presupuesto</Text>
                         <Metric className="pt-1">{formatearPresupuesto(presupuesto)}</Metric>
-                        <ModalResetApp 
+                        <ModalResetApp
                             setPresupuesto={setPresupuesto}
                             setGastos={setGastos}
                             setIsValidPresupuesto={setIsValidPresupuesto}
                             isDarkMode={isDarkMode}
                         />
-                        <ModalAgrearPresupuesto 
+                        <ModalAgrearPresupuesto
                             isDarkMode={isDarkMode}
+                            deposito={deposito}
+                            setDeposito={setDeposito}
                         />
                     </Card>
 
