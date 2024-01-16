@@ -4,9 +4,23 @@ import { NumberInput } from "@tremor/react";
 import { CurrencyDollarIcon } from '@heroicons/react/outline'
 import { toast } from 'sonner'
 
-export default function ModalAgrearPresupuesto({ isDarkMode, setDeposito, deposito }) {
+export default function ModalAgrearPresupuesto({
+    isDarkMode,
+    setPresupuesto,
+    setDisponible,
+    presupuesto,
+    disponible,
+    depositos,
+    setDepositos
+}) {
 
     const [openModal, setOpenModal] = useState(false);
+    
+    const generarId = () => {
+        const random = Math.random().toString(36).substr(2)
+        const fecha = Date.now().toString(36)
+        return random + fecha
+    }
 
     const handleAgregarPresupuesto = e => {
         e.preventDefault()
@@ -15,7 +29,17 @@ export default function ModalAgrearPresupuesto({ isDarkMode, setDeposito, deposi
             toast.error('Cantidad no valida')
             return;
         } else {
-            setDeposito(parseInt(cantidad))
+            setPresupuesto(presupuesto + parseInt(cantidad))
+            setDisponible(disponible + parseInt(cantidad))
+
+            const deposito = {
+                id: generarId(),
+                cantidad: parseInt(cantidad),
+                fecha: Date.now()
+            }
+
+            setDepositos([...depositos, deposito])
+
             toast.success('Presupuesto agregado')
         }
         setOpenModal(false)
@@ -48,7 +72,7 @@ export default function ModalAgrearPresupuesto({ isDarkMode, setDeposito, deposi
                             className='w-3/4 m-auto mt-3'
                         >Agregar</Button>
                         <button
-                        id='asdasda'
+                            id='asdasda'
                             className='absolute right-0 top-0'
                             onClick={() => setOpenModal(false)}
                         >

@@ -90,7 +90,7 @@ export default function Gasto({ gasto, setGastoEditar, eliminarGasto }) {
                     </div>
 
                     <div className='flex justify-end items-center w-full'>
-                        <p className="text-black dark:text-white text-xl max-[640px]:text-base font-bold text-center">-{formatearCantidad(gasto.cantidad)}
+                        <p className="text-red-500 text-xl max-[640px]:text-base font-bold text-center">-{formatearCantidad(gasto.cantidad)}
                             <br />
                             <span className="font-semibold text-sm max-[640px]:text-sm text-black dark:text-white">{formatearFecha(gasto.fecha)}</span>
                         </p>

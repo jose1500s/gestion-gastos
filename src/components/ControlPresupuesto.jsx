@@ -17,18 +17,13 @@ export default function ControlPresupuesto({ presupuesto, setPresupuesto, isDark
     const [openModalEditar, setOpenModalEditar] = useState(false);
     const [filtro, setFiltro] = useState([])
     const [gastosFiltrados, setGastosFiltrados] = useState([])
-    const [deposito, setDeposito] = useState(0)
+    const [depositos, setDepositos] = useState([])
 
     useEffect(() => {
         if (Object.keys(gastoEditar).length) {
             setOpenModalEditar(true);
         }
     }, [gastoEditar])
-
-    useEffect(() => {
-        setPresupuesto(presupuesto + deposito)
-        setDisponible(disponible + deposito)
-    }, [deposito])
 
     useEffect(() => {
         localStorage.setItem('gastos', JSON.stringify(gastos) ?? [])
@@ -180,8 +175,12 @@ export default function ControlPresupuesto({ presupuesto, setPresupuesto, isDark
                         />
                         <ModalAgrearPresupuesto
                             isDarkMode={isDarkMode}
-                            deposito={deposito}
-                            setDeposito={setDeposito}
+                            setPresupuesto={setPresupuesto}
+                            setDisponible={setDisponible}
+                            presupuesto={presupuesto}
+                            disponible={disponible}
+                            depositos={depositos}
+                            setDepositos={setDepositos}
                         />
                     </Card>
 
